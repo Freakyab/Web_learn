@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time and Date</title>
+    <link rel="stylesheet" href="style_pra.css">
+
 </head>
 <style>
-    ul{
+    ul {
         list-style: none;
     }
 </style>
+
 <body>
     <section>
         <h1>Time</h1>
-    </section>  
+    </section>
     <p>
-    today is : 
+        today is :
         <h id="day">
         </h>
-    </p>  
-    <p >
-        Current time =  
+    </p>
+    <p>
+        Current time =
         <h id="type">
         </h>
     </p>
@@ -35,76 +39,109 @@
     <section>
         <h1>Calculator</h1>
         <div>
-           Enter the first no. <input id ="userinput"></br></br>
-           Enter the second no. <input id ="userinput1"></br>
+            Enter the first no. <input id="userinput"></br></br>
+            Enter the second no. <input id="userinput1"></br>
         </div>
-        <button onclick = "Submit()">Submit</button>
+        <button onclick="Submit()">Submit</button>
         <ul>
-            <li><input type="checkbox" class = "chec_li" onclick="_add_()" >add</li>
-            <li><input type="checkbox" class = "chec_li" onclick="_sub_()"  >sub</li>
-            <li><input type="checkbox" class = "chec_li" onclick="_multi_()" >multi</li>
-            <li><input type="checkbox" class = "chec_li" onclick="_divi_()" >divide</li>
+            <li><input type="checkbox" class="chec_li" onclick="_add_()">add</li>
+            <li><input type="checkbox" class="chec_li" onclick="_sub_()">sub</li>
+            <li><input type="checkbox" class="chec_li" onclick="_multi_()">multi</li>
+            <li><input type="checkbox" class="chec_li" onclick="_divi_()">divide</li>
         </ul>
         <div id="result_cal"></div>
     </section>
+    <section>
+        <div class="clock">
+            <div class="clock_circle">
+                <div class="clock_centre"></div>
+                <div class="no"></div>
+                <div class="no1"></div>
+                <div class="sec_hand" >
+                </div>
+                <div class="min_hand">
+                </div>
+                <div class="hour_hand">
+                </div>
+                <!-- <div class="sec_hand" style="transform: rotate(3deg)"></div> -->
+            </div>
+        </div>
+
+    </section>
     <script>
-        function timeip(){
-            week = ["Monday","Tuesday","WEd","thur","FRIDAY","SAt","Sunday"]
-            var time= new Date();
-            var month= time.getMonth();
+        function timeip() {
+            week = ["Monday", "Tuesday", "WEd", "thur", "FRIDAY", "SAt", "Sunday"]
+            var time = new Date();
+            var month = time.getMonth();
             var date = time.getDate()
             var day = week[time.getDay()];
             var hr = time.getHours();
             var min = time.getMinutes();
             var sec = time.getSeconds()
-            if(hr<12)
-            {
-                var type =hr.toString()+"AM";
+            if (hr < 12) {
+                var type = hr.toString() + "AM";
             }
-            else{
-                type =(hr-12).toString()+"PM";
+            else {
+                type = (hr - 12).toString() + "PM";
             }
-            document.getElementById('day').innerHTML= " "+day.toString();
-            document.getElementById('type').innerHTML= " " +type.toString() + " : " + min.toString()+" : "+sec.toString();
+            document.getElementById('day').innerHTML = " " + day.toString();
+            document.getElementById('type').innerHTML = " " + type.toString() + " : " + min.toString() + " : " + sec.toString();
         }
-    setInterval(timeip,10);
-//
-    function print_()
-    {
-        window.print();
-    }
-//
-    var value2=0;
-    var value1=0;
-    function Submit(){
-        value2 = document.getElementById('userinput').value;
-        value1 = document.getElementById('userinput1').value;
-        if (value2.length == 0 |value1.length == 0)
-        {
-            alert("enter the value");
+        setInterval(timeip, 10);
+        //
+        function print_() {
+            window.print();
         }
-    }
+        //
+        var value2 = 0;
+        var value1 = 0;
+        function Submit() {
+            value2 = document.getElementById('userinput').value;
+            value1 = document.getElementById('userinput1').value;
+            if (value2.length == 0 | value1.length == 0) {
+                alert("enter the value");
+            }
+        }
 
-    function _add_()
-    {
-        let total = parseInt(value2) + parseInt(value1);
-        document.getElementById('result_cal').innerHTML="Total is "+"= "+total.toString();  
-    }
-    function _sub_()
-    {
-        let total = parseInt(value2) - parseInt(value1);
-        document.getElementById('result_cal').innerHTML="Total is "+"= "+total.toString();  
-    }
-    function _multi_()
-    {
-        let total = parseInt(value2) * parseInt(value1);
-        document.getElementById('result_cal').innerHTML="Total is "+"= "+total.toString();  
-    }
-    function _divi_()
-    {
-        let total = parseInt(value2) / parseInt(value1);
-        document.getElementById('result_cal').innerHTML="Total is "+"= "+total.toString();  
-    }
+        function _add_() {
+            let total = parseInt(value2) + parseInt(value1);
+            document.getElementById('result_cal').innerHTML = "Total is " + "= " + total.toString();
+        }
+        function _sub_() {
+            let total = parseInt(value2) - parseInt(value1);
+            document.getElementById('result_cal').innerHTML = "Total is " + "= " + total.toString();
+        }
+        function _multi_() {
+            let total = parseInt(value2) * parseInt(value1);
+            document.getElementById('result_cal').innerHTML = "Total is " + "= " + total.toString();
+        }
+        function _divi_() {
+            let total = parseInt(value2) / parseInt(value1);
+            document.getElementById('result_cal').innerHTML = "Total is " + "= " + total.toString();
+        }
+        //
+
+        function rotate() {
+
+            var time = new Date();
+            var sec = time.getSeconds();
+            var mili = time.getMilliseconds();
+            var min = time.getMinutes();
+            var hr = time.getHours();
+            const secondsDegrees = ((sec / 60) * 360);
+            console.log(sec);
+            console.log(min);
+            var sechand = document.querySelector('.sec_hand');
+            var minhand = document.querySelector('.min_hand');
+            var hrhand = document.querySelector('.hour_hand');
+            sechand.style.transform = `rotate(${secondsDegrees}deg)`;
+            minhand.style.transform = `rotate(${180 - min}deg)`;
+            hrhand.style.transform = `rotate(${-hr}deg)`;
+            // hrhand.style.transform = `rotate(${0}deg)`;
+
+        }
+        setInterval(rotate, 1000);
     </script>
 </body>
-</html> 
+
+</html>
