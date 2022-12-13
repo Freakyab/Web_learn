@@ -81,7 +81,7 @@ body{
     transform: rotate(150deg)
   }
 
-  .inner-clock-face {
+  /* .inner-clock-face {
     position: absolute;
     top: 10%;
     left: 10%;
@@ -134,4 +134,4 @@ body{
     background: #ee791a;
     width: 45%;
     height: 2px;
-  }
+  } */
